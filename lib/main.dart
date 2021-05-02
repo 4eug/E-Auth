@@ -1,4 +1,4 @@
-import 'package:e_auth/src/app.dart';
+import 'package:e_auth/app.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
