@@ -1,3 +1,5 @@
+import 'package:e_auth/routes/router.dart';
+import 'package:e_auth/routes/routes.dart';
 import 'package:flutter/material.dart';
 
 class App extends StatelessWidget {
@@ -8,6 +10,8 @@ class App extends StatelessWidget {
     return MaterialApp(
       title: 'E-Authentication System',
       debugShowCheckedModeBanner: false,
+      onGenerateRoute: generateRoute,
+      initialRoute: welcomeScreenRoute,
     );
   }
 }
