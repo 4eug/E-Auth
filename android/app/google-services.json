@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "74325057522",
+    "project_id": "e-auth-fe0cb",
+    "storage_bucket": "e-auth-fe0cb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:74325057522:android:2b6d5d3be8d5b3d166556b",
+        "android_client_info": {
+          "package_name": "com.example.e_auth"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "74325057522-q420bbiuvk3kgi3m9bk9bbblrmtink5h.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAlunjnSQ82qIGy8oowjqXKQiU84Wmka6A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "74325057522-q420bbiuvk3kgi3m9bk9bbblrmtink5h.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
