@@ -1,3 +1,4 @@
+import 'package:e_auth/routes/routes.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -129,7 +130,10 @@ class _LoginScreenState extends State<LoginScreen> {
                         fontWeight: FontWeight.bold,
                         decoration: TextDecoration.underline),
                   ),
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.of(context).pushNamedAndRemoveUntil(
+                        registerScreenRoute, (route) => false);
+                  },
                 )
               ],
             )
