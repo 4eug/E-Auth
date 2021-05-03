@@ -1,4 +1,6 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class LoginScreen extends StatefulWidget {
   LoginScreen({Key key}) : super(key: key);
@@ -8,6 +10,9 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  String _email, _password;
+  final auth = FirebaseAuth.instance;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,7 +37,8 @@ class _LoginScreenState extends State<LoginScreen> {
             _textField2(context),
             SizedBox(height: 20),
             _loginButton,
-            SizedBox(height: 20),
+            SizedBox(height: 50),
+            _already()
           ],
         ),
       ),
@@ -45,7 +51,8 @@ Widget _textField1(context) => Padding(
       child: TextField(
         keyboardType: TextInputType.emailAddress,
         decoration: new InputDecoration(
-          labelText: 'Name',
+          labelText: 'Email',
+          prefixIcon: Icon(Icons.person),
           isCollapsed: false,
           focusedBorder: new OutlineInputBorder(
             borderSide: new BorderSide(color: Color(0xFF5ABD8C), width: 2),
@@ -62,6 +69,7 @@ Widget _textField1(context) => Padding(
           filled: true,
           hintStyle: new TextStyle(color: Color(0x75000000)),
         ),
+        onChanged: (value) {},
       ),
     );
 
@@ -71,6 +79,7 @@ Widget _textField2(context) => Padding(
         keyboardType: TextInputType.emailAddress,
         decoration: new InputDecoration(
           labelText: 'Password',
+          prefixIcon: Icon(Icons.lock),
           isCollapsed: false,
           focusedBorder: new OutlineInputBorder(
             borderSide: new BorderSide(color: Color(0xFF5ABD8C), width: 2),
@@ -87,6 +96,7 @@ Widget _textField2(context) => Padding(
           filled: true,
           hintStyle: new TextStyle(color: Color(0x75000000)),
         ),
+        onChanged: (value) {},
       ),
     );
 
@@ -104,3 +114,25 @@ Widget get _loginButton => Padding(
         style: TextStyle(fontSize: 15, color: Colors.white),
       ),
     ));
+
+Widget _already() {
+  return Row(
+    mainAxisAlignment: MainAxisAlignment.center,
+    children: [
+      Text(
+        "Already have an account? ",
+        style: GoogleFonts.poppins(fontSize: 18),
+      ),
+      InkWell(
+        child: Text(
+          "Sign In",
+          style: GoogleFonts.poppins(
+              fontSize: 18,
+              fontWeight: FontWeight.bold,
+              decoration: TextDecoration.underline),
+        ),
+        onTap: () {},
+      )
+    ],
+  );
+}
