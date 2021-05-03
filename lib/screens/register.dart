@@ -37,7 +37,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
             ),
             SizedBox(height: 80),
             Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: const EdgeInsets.all(20),
               child: TextField(
                 keyboardType: TextInputType.emailAddress,
                 decoration: InputDecoration(
@@ -68,9 +68,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 },
               ),
             ),
-            SizedBox(height: 20),
+            SizedBox(height: 5),
             Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: const EdgeInsets.all(20),
               child: TextField(
                 obscureText: true,
                 decoration: InputDecoration(

@@ -68,7 +68,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 },
               ),
             ),
-            SizedBox(height: 10),
+            SizedBox(height: 5),
             Padding(
               padding: const EdgeInsets.all(20),
               child: TextField(
@@ -114,7 +114,10 @@ class _LoginScreenState extends State<LoginScreen> {
                           color: Color(0xFF5ABD8C),
                           fontWeight: FontWeight.w500),
                     ),
-                    onTap: () {},
+                    onTap: () {
+                      Navigator.of(context).pushNamedAndRemoveUntil(
+                          resetScreenRoute, (route) => false);
+                    },
                   ),
                 ],
               ),
