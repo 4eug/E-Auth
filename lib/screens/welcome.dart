@@ -33,10 +33,14 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
       body: Stack(
         children: [
           Container(
+            color: Colors.black,
             height: SizeConfig.blockSizeVertical * 100,
-            child: Image.asset(
-              "assets/images/background.jpg",
-              fit: BoxFit.fill,
+            child: Opacity(
+              opacity: .4,
+              child: Image.asset(
+                "assets/images/background.jpg",
+                fit: BoxFit.fill,
+              ),
             ),
           ),
           Positioned(
