@@ -1,7 +1,9 @@
 import 'package:e_auth/routes/routes.dart';
+import 'package:e_auth/screens/home.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class LoginScreen extends StatefulWidget {
   LoginScreen({Key key}) : super(key: key);
@@ -108,7 +110,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   color: Color(0xFF5ABD8C),
                   shape: RoundedRectangleBorder(
                       borderRadius: new BorderRadius.circular(20.0)),
-                  onPressed: () {},
+                  onPressed: () => _signin(_email, _password),
                   child: Text(
                     "Log In",
                     style: TextStyle(fontSize: 15, color: Colors.white),
@@ -136,10 +138,24 @@ class _LoginScreenState extends State<LoginScreen> {
                   },
                 )
               ],
-            )
+            ),
           ],
         ),
       ),
     );
+  }
+
+  // ignore: unused_element
+  _signin(String _email, String _password) async {
+    try {
+      await auth.signInWithEmailAndPassword(email: _email, password: _password);
+
+      //Sucessful
+
+      Navigator.of(context)
+          .push(MaterialPageRoute(builder: (context) => HomeScreen()));
+    } on FirebaseAuthException catch (error) {
+      Fluttertoast.showToast(msg: error.message, gravity: ToastGravity.TOP);
+    }
   }
 }

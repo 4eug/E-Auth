@@ -1,5 +1,8 @@
+import 'package:e_auth/routes/routes.dart';
+import 'package:e_auth/screens/verify.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class RegisterScreen extends StatefulWidget {
@@ -107,7 +110,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   color: Color(0xFF5ABD8C),
                   shape: RoundedRectangleBorder(
                       borderRadius: new BorderRadius.circular(20.0)),
-                  onPressed: () {},
+                  onPressed: () => _register(_email, _password),
                   child: Text(
                     "Register",
                     style: TextStyle(fontSize: 15, color: Colors.white),
@@ -129,7 +132,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         fontWeight: FontWeight.bold,
                         decoration: TextDecoration.underline),
                   ),
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.of(context).pushNamedAndRemoveUntil(
+                        loginScreenRoute, (route) => false);
+                  },
                 )
               ],
             )
@@ -137,5 +143,16 @@ class _RegisterScreenState extends State<RegisterScreen> {
         ),
       ),
     );
+  }
+
+  _register(String _email, String _password) async {
+    try {
+      await auth.createUserWithEmailAndPassword(
+          email: _email, password: _password);
+      Navigator.of(context)
+          .push(MaterialPageRoute(builder: (context) => VerifyScreen()));
+    } on FirebaseAuthException catch (error) {
+      Fluttertoast.showToast(msg: error.message, gravity: ToastGravity.TOP);
+    }
   }
 }
