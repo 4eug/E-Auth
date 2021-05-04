@@ -1,5 +1,5 @@
-import 'package:e_auth/screens/login.dart';
-import 'package:e_auth/screens/verify.dart';
+import 'package:e_auth/screens/emailAuth/login.dart';
+import 'package:e_auth/screens/emailAuth/verify.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';

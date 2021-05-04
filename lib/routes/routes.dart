@@ -9,3 +9,5 @@ const String loginScreenRoute = 'login';
 const String registerScreenRoute = 'register';
 
 const String resetScreenRoute = 'reset';
+
+const String loginPhoneScreenRoute = 'loginPhone';

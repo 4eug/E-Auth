@@ -1,5 +1,4 @@
 import 'dart:async';
-
 import 'package:e_auth/screens/home.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
