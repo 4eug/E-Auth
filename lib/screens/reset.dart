@@ -75,7 +75,7 @@ class _ResetScreenState extends State<ResetScreen> {
                       borderRadius: new BorderRadius.circular(20.0)),
                   onPressed: () {
                     auth.sendPasswordResetEmail(email: _email);
-                    Navigator.of(context).pop();
+                    Navigator.pop(context);
                   },
                   child: Text(
                     "Send Reset Request",

@@ -1,4 +1,4 @@
-import 'package:e_auth/routes/routes.dart';
+import 'package:e_auth/screens/login.dart';
 import 'package:e_auth/screens/verify.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -133,8 +133,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         decoration: TextDecoration.underline),
                   ),
                   onTap: () {
-                    Navigator.of(context).pushNamedAndRemoveUntil(
-                        loginScreenRoute, (route) => false);
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => LoginScreen()),
+                    );
                   },
                 )
               ],

@@ -1,5 +1,6 @@
-import 'package:e_auth/routes/routes.dart';
 import 'package:e_auth/screens/confirmuser.dart';
+import 'package:e_auth/screens/register.dart';
+import 'package:e_auth/screens/reset.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -115,8 +116,12 @@ class _LoginScreenState extends State<LoginScreen> {
                           fontWeight: FontWeight.w500),
                     ),
                     onTap: () {
-                      Navigator.of(context).pushNamedAndRemoveUntil(
-                          resetScreenRoute, (route) => false);
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => ResetScreen()),
+                      );
+                      // Navigator.of(context).pushNamedAndRemoveUntil(
+                      //     resetScreenRoute, (route) => false);
                     },
                   ),
                 ],
@@ -153,8 +158,10 @@ class _LoginScreenState extends State<LoginScreen> {
                         decoration: TextDecoration.underline),
                   ),
                   onTap: () {
-                    Navigator.of(context).pushNamedAndRemoveUntil(
-                        registerScreenRoute, (route) => false);
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => RegisterScreen()),
+                    );
                   },
                 )
               ],
