@@ -1,6 +1,6 @@
-import 'package:e_auth/screens/confirmuser.dart';
-import 'package:e_auth/screens/register.dart';
-import 'package:e_auth/screens/reset.dart';
+import 'package:e_auth/screens/emailAuth/confirmuser.dart';
+import 'package:e_auth/screens/emailAuth/register.dart';
+import 'package:e_auth/screens/emailAuth/reset.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
