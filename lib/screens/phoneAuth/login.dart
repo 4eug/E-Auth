@@ -160,16 +160,33 @@ class _LoginPhoneScreenState extends State<LoginPhoneScreen> {
         ),
         SizedBox(height: 30),
         TextField(
+          keyboardType: TextInputType.number,
           controller: otpController,
           decoration: InputDecoration(
-            hintText: "Enter OTP",
+            labelText: "Enter OTP",
+            isCollapsed: false,
+            focusedBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.all(
+              Radius.circular(20),
+            )),
+            enabledBorder: OutlineInputBorder(
+                borderSide: BorderSide(color: Color(0x80EFEFEF)),
+                borderRadius: BorderRadius.all(
+                  Radius.circular(20),
+                )),
+            filled: true,
+            hintStyle: new TextStyle(color: Color(0x75000000)),
           ),
         ),
         SizedBox(
-          height: 16,
+          height: 20,
         ),
         // ignore: deprecated_member_use
         FlatButton(
+          height: 56,
+          minWidth: double.infinity,
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)),
           onPressed: () async {
             PhoneAuthCredential phoneAuthCredential =
                 PhoneAuthProvider.credential(
