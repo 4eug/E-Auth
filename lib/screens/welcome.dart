@@ -22,7 +22,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
   loadContext() async {
     Timer(Duration(seconds: 5), () {
       Navigator.of(context)
-          .pushNamedAndRemoveUntil(loginPhoneScreenRoute, (route) => false);
+          .pushNamedAndRemoveUntil(loginScreenRoute, (route) => false);
     });
   }
 

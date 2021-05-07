@@ -1,6 +1,6 @@
-import 'package:e_auth/screens/emailAuth/confirmuser.dart';
 import 'package:e_auth/screens/emailAuth/register.dart';
 import 'package:e_auth/screens/emailAuth/reset.dart';
+import 'package:e_auth/screens/phoneAuth/login.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -43,7 +43,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 keyboardType: TextInputType.emailAddress,
                 decoration: InputDecoration(
                   labelText: 'Email',
-                  prefixIcon: Icon(Icons.person),
+                  prefixIcon: Icon(Icons.email),
                   isCollapsed: false,
                   focusedBorder: new OutlineInputBorder(
                     borderSide:
@@ -180,7 +180,7 @@ class _LoginScreenState extends State<LoginScreen> {
       //Sucessful
 
       Navigator.of(context)
-          .push(MaterialPageRoute(builder: (context) => ConfirmUser()));
+          .push(MaterialPageRoute(builder: (context) => LoginPhoneScreen()));
     } on FirebaseAuthException catch (error) {
       Fluttertoast.showToast(msg: error.message, gravity: ToastGravity.TOP);
     }
