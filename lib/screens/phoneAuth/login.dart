@@ -59,9 +59,24 @@ class _LoginPhoneScreenState extends State<LoginPhoneScreen> {
       children: [
         Spacer(),
         TextField(
+          keyboardType: TextInputType.phone,
           controller: phoneController,
           decoration: InputDecoration(
-            hintText: "Phone Number",
+            labelText: "Phone Number",
+            prefixIcon: Icon(Icons.phone),
+            isCollapsed: false,
+            focusedBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.all(
+                Radius.circular(20.0),
+              ),
+            ),
+            enabledBorder: OutlineInputBorder(
+                borderSide: new BorderSide(color: Color(0x80EFEFEF), width: 2),
+                borderRadius: BorderRadius.all(
+                  Radius.circular(20.0),
+                )),
+            filled: true,
+            hintStyle: new TextStyle(color: Color(0x75000000)),
           ),
         ),
         SizedBox(
