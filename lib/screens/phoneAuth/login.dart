@@ -195,8 +195,11 @@ class _LoginPhoneScreenState extends State<LoginPhoneScreen> {
 
             signInWithPhoneAuthCredential(phoneAuthCredential);
           },
-          child: Text("VERIFY"),
-          color: Colors.blue,
+          child: Text(
+            "Verify",
+            style: TextStyle(fontSize: 15, color: Colors.white),
+          ),
+          color: Color(0xFF5ABD8C),
           textColor: Colors.white,
         ),
         Spacer(),
