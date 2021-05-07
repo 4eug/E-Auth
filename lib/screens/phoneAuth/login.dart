@@ -146,8 +146,19 @@ class _LoginPhoneScreenState extends State<LoginPhoneScreen> {
 
   getOtpFormWidget(context) {
     return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Spacer(),
+        Padding(
+          padding: const EdgeInsets.fromLTRB(20, 100, 0, 0),
+          child: Center(
+            child: Text(
+              "Enter OTP Code",
+              style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+            ),
+          ),
+        ),
+        SizedBox(height: 30),
         TextField(
           controller: otpController,
           decoration: InputDecoration(
