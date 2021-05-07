@@ -56,8 +56,21 @@ class _LoginPhoneScreenState extends State<LoginPhoneScreen> {
 
   getMobileFormWidget(context) {
     return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Spacer(),
+        Padding(
+          padding: const EdgeInsets.fromLTRB(20, 100, 0, 0),
+          child: Center(
+            child: Text(
+              "Enter Your Phone Number",
+              style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+            ),
+          ),
+        ),
+
+        SizedBox(height: 30),
+
         TextField(
           keyboardType: TextInputType.phone,
           controller: phoneController,
@@ -80,10 +93,14 @@ class _LoginPhoneScreenState extends State<LoginPhoneScreen> {
           ),
         ),
         SizedBox(
-          height: 16,
+          height: 20,
         ),
         // ignore: deprecated_member_use
         FlatButton(
+          height: 56,
+          minWidth: double.infinity,
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)),
           onPressed: () async {
             setState(() {
               showLoading = true;
@@ -115,8 +132,11 @@ class _LoginPhoneScreenState extends State<LoginPhoneScreen> {
               codeAutoRetrievalTimeout: (verificationId) async {},
             );
           },
-          child: Text("SEND"),
-          color: Colors.blue,
+          child: Text(
+            "Send",
+            style: TextStyle(fontSize: 15, color: Colors.white),
+          ),
+          color: Color(0xFF5ABD8C),
           textColor: Colors.white,
         ),
         Spacer(),
