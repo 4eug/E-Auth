@@ -19,7 +19,7 @@ class _LoginPhoneScreenState extends State<LoginPhoneScreen> {
   final phoneController = TextEditingController();
   final otpController = TextEditingController();
 
-  FirebaseAuth _auth = FirebaseAuth.instance;
+  FirebaseAuth auth = FirebaseAuth.instance;
 
   String verificationId;
 
@@ -33,7 +33,7 @@ class _LoginPhoneScreenState extends State<LoginPhoneScreen> {
 
     try {
       final authCredential =
-          await _auth.signInWithCredential(phoneAuthCredential);
+          await auth.signInWithCredential(phoneAuthCredential);
 
       setState(() {
         showLoading = false;
@@ -106,7 +106,7 @@ class _LoginPhoneScreenState extends State<LoginPhoneScreen> {
               showLoading = true;
             });
 
-            await _auth.verifyPhoneNumber(
+            await auth.verifyPhoneNumber(
               phoneNumber: phoneController.text,
               verificationCompleted: (phoneAuthCredential) async {
                 setState(() {
