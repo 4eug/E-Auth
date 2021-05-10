@@ -1,20 +1,21 @@
 {
   "project_info": {
-    "project_number": "74325057522",
-    "project_id": "e-auth-fe0cb",
-    "storage_bucket": "e-auth-fe0cb.appspot.com"
+    "project_number": "420338039700",
+    "firebase_url": "https://e-auth-bbc6d-default-rtdb.firebaseio.com",
+    "project_id": "e-auth-bbc6d",
+    "storage_bucket": "e-auth-bbc6d.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:74325057522:android:883f317c58eb65e966556b",
+        "mobilesdk_app_id": "1:420338039700:android:49be9e4f54d5c2e820ed81",
         "android_client_info": {
           "package_name": "com.example.e_auth"
         }
       },
       "oauth_client": [
         {
-          "client_id": "74325057522-upbns8t5c8j560m8rlmg9qjl8mjtnge5.apps.googleusercontent.com",
+          "client_id": "420338039700-l7ehtvklsidmrci54v44g21k8jem2rbc.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.example.e_auth",
@@ -22,20 +23,20 @@
           }
         },
         {
-          "client_id": "74325057522-q420bbiuvk3kgi3m9bk9bbblrmtink5h.apps.googleusercontent.com",
+          "client_id": "420338039700-2pkfsnpjc5oamn512nsps3j8lkcna60m.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyAlunjnSQ82qIGy8oowjqXKQiU84Wmka6A"
+          "current_key": "AIzaSyChiiXD0u1BS1iWelcEPmfPLqU4SbsSKtA"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "74325057522-q420bbiuvk3kgi3m9bk9bbblrmtink5h.apps.googleusercontent.com",
+              "client_id": "420338039700-2pkfsnpjc5oamn512nsps3j8lkcna60m.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

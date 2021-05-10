@@ -1,10 +1,11 @@
 import 'package:e_auth/screens/emailAuth/register.dart';
 import 'package:e_auth/screens/emailAuth/reset.dart';
-import 'package:e_auth/screens/phoneAuth/login.dart';
+import 'package:e_auth/screens/home.dart';
+
 import 'package:firebase_auth/firebase_auth.dart';
+
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 
 class LoginScreen extends StatefulWidget {
   LoginScreen({Key key}) : super(key: key);
@@ -14,9 +15,13 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  // ignore: unused_field
-  String _email, _password;
-  final auth = FirebaseAuth.instance;
+  // final _formKey = GlobalKey<FormState>();
+  FirebaseAuth firebaseAuth = FirebaseAuth.instance;
+  TextEditingController emailController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
+  TextEditingController phoneController = TextEditingController();
+
+  bool isLoading = false;
 
   @override
   Widget build(BuildContext context) {
@@ -64,7 +69,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
                 onChanged: (value) {
                   setState(() {
-                    _email = value.trim();
+                    emailController.text = value.trim();
                   });
                 },
               ),
@@ -97,7 +102,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
                 onChanged: (value) {
                   setState(() {
-                    _password = value;
+                    passwordController.text = value;
                   });
                 },
               ),
@@ -135,7 +140,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   color: Color(0xFF5ABD8C),
                   shape: RoundedRectangleBorder(
                       borderRadius: new BorderRadius.circular(20.0)),
-                  onPressed: () => _signin(_email, _password),
+                  onPressed: () => _signin(),
                   child: Text(
                     "Log In",
                     style: TextStyle(fontSize: 15, color: Colors.white),
@@ -173,16 +178,49 @@ class _LoginScreenState extends State<LoginScreen> {
   }
 
   // ignore: unused_element
-  _signin(String _email, String _password) async {
-    try {
-      await auth.signInWithEmailAndPassword(email: _email, password: _password);
+//   _signin() async {
 
-      //Sucessful
+//        firebaseAuth.signInWithEmailAndPassword(
+//           email: emailController.text, password: passwordController.text);
 
-      Navigator.of(context)
-          .push(MaterialPageRoute(builder: (context) => LoginPhoneScreen()));
-    } on FirebaseAuthException catch (error) {
-      Fluttertoast.showToast(msg: error.message, gravity: ToastGravity.TOP);
-    }
+//       //Sucessful
+
+//       Navigator.of(context)
+//           .push(MaterialPageRoute(builder: (context) => LoginPhoneScreen()));
+//     } on FirebaseAuthException catch (error) {
+//       Fluttertoast.showToast(msg: error.message, gravity: ToastGravity.TOP);
+//     }
+
+// }
+
+  void _signin() {
+    FirebaseAuth.instance
+        .signInWithEmailAndPassword(
+            email: emailController.text, password: passwordController.text)
+        .then((result) {
+      isLoading = false;
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (context) => Home()),
+      );
+    }).catchError((err) {
+      print(err.message);
+      showDialog(
+          context: context,
+          builder: (BuildContext context) {
+            return AlertDialog(
+              title: Text("Error"),
+              content: Text(err.message),
+              actions: [
+                ElevatedButton(
+                  child: Text("Ok"),
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                )
+              ],
+            );
+          });
+    });
   }
 }

@@ -19,7 +19,7 @@ Route<dynamic> generateRoute(RouteSettings settings) {
 
     case homeScreenRoute:
       return PageTransition(
-        child: HomeScreen(),
+        child: Home(),
         type: PageTransitionType.fade,
       );
 
