@@ -1,5 +1,5 @@
-import 'package:e_auth/screens/emailAuth/login.dart';
 import 'package:e_auth/screens/home.dart';
+import 'package:e_auth/screens/select_auth.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:splashscreen/splashscreen.dart';
@@ -10,7 +10,7 @@ class WelcomeScreen extends StatelessWidget {
     User result = FirebaseAuth.instance.currentUser;
     return new SplashScreen(
         navigateAfterSeconds:
-            result != null ? Home(uid: result.uid) : LoginScreen(),
+            result != null ? Home(uid: result.uid) : SelectAuthType(),
         seconds: 5,
         title: new Text(
           'Welcome E Authentication!',
@@ -21,6 +21,6 @@ class WelcomeScreen extends StatelessWidget {
         styleTextUnderTheLoader: new TextStyle(),
         photoSize: 100.0,
         onClick: () => print("flutter"),
-        loaderColor: Colors.red);
+        loaderColor: Colors.blue);
   }
 }
