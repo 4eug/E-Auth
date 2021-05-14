@@ -1,3 +1,4 @@
+import 'package:e_auth/screens/emailAuth/login.dart';
 import 'package:e_auth/screens/home.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -8,10 +9,11 @@ class WelcomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     User result = FirebaseAuth.instance.currentUser;
     return new SplashScreen(
-        navigateAfterSeconds: result != null ? Home(uid: result.uid) : SignUp(),
+        navigateAfterSeconds:
+            result != null ? Home(uid: result.uid) : LoginScreen(),
         seconds: 5,
         title: new Text(
-          'Welcome To Meet up!',
+          'Welcome E Authentication!',
           style: new TextStyle(fontWeight: FontWeight.bold, fontSize: 20.0),
         ),
         image: Image.asset('assets/images/dart.png', fit: BoxFit.scaleDown),
