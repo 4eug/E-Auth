@@ -1,73 +1,24 @@
-import 'dart:async';
-
-import 'package:e_auth/routes/routes.dart';
-import 'package:e_auth/utils/config.dart';
+import 'package:e_auth/screens/home.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:splashscreen/splashscreen.dart';
 
-class WelcomeScreen extends StatefulWidget {
-  WelcomeScreen({Key key}) : super(key: key);
-
+class WelcomeScreen extends StatelessWidget {
   @override
-  _WelcomeScreenState createState() => _WelcomeScreenState();
-}
-
-class _WelcomeScreenState extends State<WelcomeScreen> {
-  @override
-  void initState() {
-    super.initState();
-    loadContext();
-  }
-
-  loadContext() async {
-    Timer(Duration(seconds: 5), () {
-      Navigator.of(context)
-          .pushNamedAndRemoveUntil(loginScreenRoute, (route) => false);
-    });
-  }
-
   Widget build(BuildContext context) {
-    SizeConfig().init(context);
-
-    return Scaffold(
-      body: Stack(
-        children: [
-          Container(
-            color: Colors.black,
-            height: SizeConfig.blockSizeVertical * 100,
-            child: Opacity(
-              opacity: .4,
-              child: Image.asset(
-                "assets/images/background.jpg",
-                fit: BoxFit.fill,
-              ),
-            ),
-          ),
-          Positioned(
-            top: SizeConfig.blockSizeVertical * 50,
-            left: SizeConfig.blockSizeHorizontal * 25,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Text(
-                  "E-Authentication",
-                  style: GoogleFonts.montserrat(
-                      fontSize: 30,
-                      color: Colors.white,
-                      fontWeight: FontWeight.w500),
-                ),
-                Text(
-                  "System",
-                  style: GoogleFonts.montserrat(
-                      fontSize: 30,
-                      color: Colors.white,
-                      fontWeight: FontWeight.w500),
-                )
-              ],
-            ),
-          ),
-        ],
-      ),
-    );
+    User result = FirebaseAuth.instance.currentUser;
+    return new SplashScreen(
+        navigateAfterSeconds: result != null ? Home(uid: result.uid) : SignUp(),
+        seconds: 5,
+        title: new Text(
+          'Welcome To Meet up!',
+          style: new TextStyle(fontWeight: FontWeight.bold, fontSize: 20.0),
+        ),
+        image: Image.asset('assets/images/dart.png', fit: BoxFit.scaleDown),
+        backgroundColor: Colors.white,
+        styleTextUnderTheLoader: new TextStyle(),
+        photoSize: 100.0,
+        onClick: () => print("flutter"),
+        loaderColor: Colors.red);
   }
 }
