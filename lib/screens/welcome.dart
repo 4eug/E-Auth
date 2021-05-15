@@ -16,7 +16,7 @@ class WelcomeScreen extends StatelessWidget {
           'Welcome E Authentication!',
           style: new TextStyle(fontWeight: FontWeight.bold, fontSize: 20.0),
         ),
-        image: Image.asset('assets/images/dart.png', fit: BoxFit.scaleDown),
+        image: Image.asset('assets/images/.png', fit: BoxFit.scaleDown),
         backgroundColor: Colors.white,
         styleTextUnderTheLoader: new TextStyle(),
         photoSize: 100.0,
