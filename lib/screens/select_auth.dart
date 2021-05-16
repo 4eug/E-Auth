@@ -30,58 +30,89 @@ class _SelectAuthTypeState extends State<SelectAuthType> {
                 ),
               ),
               SizedBox(height: 80),
-              Container(
-                width: double.infinity,
-                // ignore: deprecated_member_use
-                child: RaisedButton(
-                  onPressed: () {},
-                  padding: EdgeInsets.symmetric(vertical: 10),
-                  shape: new RoundedRectangleBorder(
-                    borderRadius: new BorderRadius.circular(30.0),
-                  ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      Icon(
-                        Icons.email,
-                        color: Colors.white,
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.all(6.0),
-                        child: Text(
-                          "Register With Your Email",
-                          style: TextStyle(
-                              fontSize: 23,
-                              color: Colors.white,
-                              letterSpacing: 0.168,
-                              fontWeight: FontWeight.w500),
+              Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Container(
+                  width: double.infinity,
+                  // ignore: deprecated_member_use
+                  child: RaisedButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => RegisterScreen()),
+                      );
+                    },
+                    padding: EdgeInsets.symmetric(vertical: 10),
+                    shape: new RoundedRectangleBorder(
+                      borderRadius: new BorderRadius.circular(30.0),
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Icon(
+                          Icons.email,
+                          color: Colors.white,
                         ),
-                      )
-                    ],
+                        Padding(
+                          padding: const EdgeInsets.all(6.0),
+                          child: Text(
+                            "Register With Your Email",
+                            style: TextStyle(
+                                fontSize: 23,
+                                color: Colors.white,
+                                letterSpacing: 0.168,
+                                fontWeight: FontWeight.w500),
+                          ),
+                        )
+                      ],
+                    ),
+                    color: Color(0xFF5ABD8C),
                   ),
-                  color: Color(0xFF5ABD8C),
                 ),
               ),
               Padding(
-                  padding: EdgeInsets.all(20.0),
-                  child: MaterialButton(
-                    height: 56,
-                    minWidth: double.infinity,
-                    color: Color(0xFF5ABD8C),
-                    shape: RoundedRectangleBorder(
-                        borderRadius: new BorderRadius.circular(20.0)),
+                padding: const EdgeInsets.all(16.0),
+                child: Container(
+                  width: double.infinity,
+                  // ignore: deprecated_member_use
+                  child: RaisedButton(
                     onPressed: () {
                       Navigator.push(
                         context,
                         MaterialPageRoute(builder: (context) => LoginScreen()),
                       );
                     },
-                    child: Text(
-                      "Log In Using Email",
-                      style: TextStyle(fontSize: 20, color: Colors.white),
+                    padding: EdgeInsets.symmetric(vertical: 10),
+                    shape: new RoundedRectangleBorder(
+                      borderRadius: new BorderRadius.circular(30.0),
                     ),
-                  )),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Icon(
+                          Icons.email,
+                          color: Colors.white,
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(6.0),
+                          child: Text(
+                            "Log In Using Your Email",
+                            style: TextStyle(
+                                fontSize: 23,
+                                color: Colors.white,
+                                letterSpacing: 0.168,
+                                fontWeight: FontWeight.w500),
+                          ),
+                        )
+                      ],
+                    ),
+                    color: Color(0xFF5ABD8C),
+                  ),
+                ),
+              ),
             ],
           ),
         ),
