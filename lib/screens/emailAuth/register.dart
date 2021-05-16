@@ -154,7 +154,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   Padding(
                       padding: const EdgeInsets.all(20),
                       child: isLoading
-                          ? CircularProgressIndicator()
+                          ? Center(child: CircularProgressIndicator())
                           : MaterialButton(
                               height: 56,
                               minWidth: double.infinity,

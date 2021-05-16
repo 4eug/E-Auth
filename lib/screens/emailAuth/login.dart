@@ -134,18 +134,25 @@ class _LoginScreenState extends State<LoginScreen> {
             ),
             Padding(
                 padding: const EdgeInsets.all(20),
-                child: MaterialButton(
-                  height: 56,
-                  minWidth: double.infinity,
-                  color: Color(0xFF5ABD8C),
-                  shape: RoundedRectangleBorder(
-                      borderRadius: new BorderRadius.circular(20.0)),
-                  onPressed: () => _signin(),
-                  child: Text(
-                    "Log In",
-                    style: TextStyle(fontSize: 15, color: Colors.white),
-                  ),
-                )),
+                child: isLoading
+                    ? Center(child: CircularProgressIndicator())
+                    : MaterialButton(
+                        height: 56,
+                        minWidth: double.infinity,
+                        color: Color(0xFF5ABD8C),
+                        shape: RoundedRectangleBorder(
+                            borderRadius: new BorderRadius.circular(20.0)),
+                        onPressed: () {
+                          setState(() {
+                            isLoading = true;
+                          });
+                          _signin();
+                        },
+                        child: Text(
+                          "Log In",
+                          style: TextStyle(fontSize: 15, color: Colors.white),
+                        ),
+                      )),
             SizedBox(height: 60),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
