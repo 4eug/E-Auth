@@ -184,7 +184,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
         .then((result) {
       dbRef.child(result.user.uid).set({
         "email": emailController.text,
-        "phone": phoneController.text
+        "phoneNumber": phoneController.text
       }).then((res) {
         isLoading = false;
         Navigator.pushReplacement(

@@ -198,6 +198,7 @@ class _LoginScreenState extends State<LoginScreen> {
         .signInWithEmailAndPassword(
             email: emailController.text, password: passwordController.text)
         .then((result) {
+      print(result.user);
       isLoading = false;
       Navigator.pushReplacement(
         context,
