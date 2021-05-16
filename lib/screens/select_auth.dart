@@ -113,6 +113,42 @@ class _SelectAuthTypeState extends State<SelectAuthType> {
                   ),
                 ),
               ),
+              Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Container(
+                  width: double.infinity,
+                  // ignore: deprecated_member_use
+                  child: RaisedButton(
+                    onPressed: () {},
+                    padding: EdgeInsets.symmetric(vertical: 10),
+                    shape: new RoundedRectangleBorder(
+                      borderRadius: new BorderRadius.circular(30.0),
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Icon(
+                          Icons.qr_code,
+                          color: Colors.white,
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(6.0),
+                          child: Text(
+                            "Log In Using QRCode",
+                            style: TextStyle(
+                                fontSize: 23,
+                                color: Colors.white,
+                                letterSpacing: 0.168,
+                                fontWeight: FontWeight.w500),
+                          ),
+                        )
+                      ],
+                    ),
+                    color: Color(0xFF5ABD8C),
+                  ),
+                ),
+              )
             ],
           ),
         ),
