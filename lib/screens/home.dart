@@ -1,4 +1,4 @@
-import 'package:e_auth/screens/emailAuth/login.dart';
+import 'package:e_auth/screens/select_auth.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
@@ -25,7 +25,7 @@ class Home extends StatelessWidget {
               auth.signOut().then((res) {
                 Navigator.pushAndRemoveUntil(
                     context,
-                    MaterialPageRoute(builder: (context) => LoginScreen()),
+                    MaterialPageRoute(builder: (context) => SelectAuthType()),
                     (Route<dynamic> route) => false);
               });
             },
