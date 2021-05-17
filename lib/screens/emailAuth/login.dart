@@ -209,7 +209,10 @@ class _LoginScreenState extends State<LoginScreen> {
       isLoading = false;
       Navigator.pushReplacement(
         context,
-        MaterialPageRoute(builder: (context) => Home()),
+        MaterialPageRoute(
+            builder: (context) => Home(
+                  uid: '',
+                )),
       );
     }).catchError((err) {
       print(err.message);

@@ -41,7 +41,11 @@ class _LoginPhoneScreenState extends State<LoginPhoneScreen> {
 
       if (authCredential?.user != null) {
         Navigator.push(
-            context, MaterialPageRoute(builder: (context) => Home()));
+            context,
+            MaterialPageRoute(
+                builder: (context) => Home(
+                      uid: '',
+                    )));
       }
     } on FirebaseAuthException catch (e) {
       setState(() {
