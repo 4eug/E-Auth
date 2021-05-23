@@ -303,11 +303,10 @@ class _LoginScreenState extends State<LoginScreen> {
       // var firebaseUser = FirebaseAuth.instance.currentUser;
       FirebaseFirestore.instance
           .collection("Users")
-          .orderBy("phoneNumber")
           .get()
           .then((QuerySnapshot querySnapshot) => {
                 querySnapshot.docs.forEach((doc) {
-                  print(doc["phoneNumber"]);
+                  print(doc["user"]);
                 })
               });
 
