@@ -39,6 +39,8 @@ class _LoginScreenState extends State<LoginScreen> {
   bool isLoading = false;
   String verificationId;
 
+   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -302,13 +304,13 @@ class _LoginScreenState extends State<LoginScreen> {
       // ignore: unused_local_variable
       // var firebaseUser = FirebaseAuth.instance.currentUser;
       FirebaseFirestore.instance
-          .collection("Users")
+          .collection('users')
           .get()
-          .then((QuerySnapshot querySnapshot) => {
-                querySnapshot.docs.forEach((doc) {
-                  print(doc["user"]);
-                })
-              });
+          .then((QuerySnapshot querySnapshot) {
+        querySnapshot.docs.forEach((doc) {
+          print(doc["phoneNumber"]);
+        });
+      });
 
       print(result.user.uid);
       isLoading = false;
@@ -321,18 +323,18 @@ class _LoginScreenState extends State<LoginScreen> {
       // );
 
       //functon to otp
-      /*
-      await auth.verifyPhoneNumber(
+      
+      await firebaseAuth.verifyPhoneNumber(
               phoneNumber: _users.phone,
               verificationCompleted: (phoneAuthCredential) async {
                 setState(() {
-                  showLoading = false;
+                  isLoading = false;
                 });
                 //signInWithPhoneAuthCredential(phoneAuthCredential);
               },
               verificationFailed: (verificationFailed) async {
                 setState(() {
-                  showLoading = false;
+                  isLoading = false;
                 });
                 // ignore: deprecated_member_use
                 _scaffoldKey.currentState.showSnackBar(
@@ -340,14 +342,14 @@ class _LoginScreenState extends State<LoginScreen> {
               },
               codeSent: (verificationId, resendingToken) async {
                 setState(() {
-                  showLoading = false;
+                  isLoading = false;
                   currentState = MobileVerificationState.SHOW_OTP_FORM_STATE;
                   this.verificationId = verificationId;
                 });
               },
               codeAutoRetrievalTimeout: (verificationId) async {},
             );
-            */
+            
     }).catchError((err) {
       print(err.message);
       showDialog(
