@@ -23,7 +23,7 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  // final _formKey = GlobalKey<FormState>();
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey();
   FirebaseAuth firebaseAuth = FirebaseAuth.instance;
   CollectionReference users = FirebaseFirestore.instance.collection("Users");
 
@@ -38,8 +38,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
   bool isLoading = false;
   String verificationId;
-
-   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey();
+  var retrievedNumber;
 
   @override
   Widget build(BuildContext context) {
@@ -298,7 +297,7 @@ class _LoginScreenState extends State<LoginScreen> {
     print(email);
     FirebaseAuth.instance
         .signInWithEmailAndPassword(email: email, password: password)
-        .then((result) {
+        .then((result) async {
       // print(FirebaseAuth.instance.currentUser.phoneNumber);
       // ignore: unused_field
       // ignore: unused_local_variable
@@ -309,8 +308,12 @@ class _LoginScreenState extends State<LoginScreen> {
           .then((QuerySnapshot querySnapshot) {
         querySnapshot.docs.forEach((doc) {
           print(doc["phoneNumber"]);
+          setState(() {
+            retrievedNumber = doc["phoneNumber"];
+          });
         });
       });
+      Text(retrievedNumber ?? "");
 
       print(result.user.uid);
       isLoading = false;
@@ -323,33 +326,32 @@ class _LoginScreenState extends State<LoginScreen> {
       // );
 
       //functon to otp
-      
-      await firebaseAuth.verifyPhoneNumber(
-              phoneNumber: _users.phone,
-              verificationCompleted: (phoneAuthCredential) async {
-                setState(() {
-                  isLoading = false;
-                });
-                //signInWithPhoneAuthCredential(phoneAuthCredential);
-              },
-              verificationFailed: (verificationFailed) async {
-                setState(() {
-                  isLoading = false;
-                });
-                // ignore: deprecated_member_use
-                _scaffoldKey.currentState.showSnackBar(
-                    SnackBar(content: Text(verificationFailed.message)));
-              },
-              codeSent: (verificationId, resendingToken) async {
-                setState(() {
-                  isLoading = false;
-                  currentState = MobileVerificationState.SHOW_OTP_FORM_STATE;
-                  this.verificationId = verificationId;
-                });
-              },
-              codeAutoRetrievalTimeout: (verificationId) async {},
-            );
-            
+
+      firebaseAuth.verifyPhoneNumber(
+        phoneNumber: retrievedNumber,
+        verificationCompleted: (phoneAuthCredential) async {
+          setState(() {
+            isLoading = false;
+          });
+          //signInWithPhoneAuthCredential(phoneAuthCredential);
+        },
+        verificationFailed: (verificationFailed) async {
+          setState(() {
+            isLoading = false;
+          });
+          // ignore: deprecated_member_use
+          _scaffoldKey.currentState.showSnackBar(
+              SnackBar(content: Text(verificationFailed.message)));
+        },
+        codeSent: (verificationId, resendingToken) async {
+          setState(() {
+            isLoading = false;
+            currentState = MobileVerificationState.SHOW_OTP_FORM_STATE;
+            this.verificationId = verificationId;
+          });
+        },
+        codeAutoRetrievalTimeout: (verificationId) async {},
+      );
     }).catchError((err) {
       print(err.message);
       showDialog(
