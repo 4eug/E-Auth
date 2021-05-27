@@ -1,5 +1,6 @@
 import 'package:e_auth/screens/emailAuth/register.dart';
 import 'package:e_auth/screens/emailAuth/reset.dart';
+import 'package:e_auth/screens/home.dart';
 
 import 'package:firebase_auth/firebase_auth.dart';
 // import 'package:firebase_core/firebase_core.dart';
@@ -43,8 +44,10 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: _scaffoldKey,
       backgroundColor: Colors.white,
-      body: SingleChildScrollView(
+      body: Container(
+        padding: EdgeInsets.all(8.0),
         child: isLoading
             ? Center(
                 child: CircularProgressIndicator(),
@@ -52,7 +55,6 @@ class _LoginScreenState extends State<LoginScreen> {
             : currentState == MobileVerificationState.SHOW_MOBILE_FORM_STATE
                 ? emailpasswrdWidget(context)
                 : getOtpFormWidget(context),
-        padding: const EdgeInsets.all(16),
       ),
     );
   }
@@ -279,7 +281,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     verificationId: verificationId,
                     smsCode: otpController.text);
 
-            // signInWithPhoneAuthCredential(phoneAuthCredential);
+            signInWithPhoneAuthCredential(phoneAuthCredential);
           },
           child: Text(
             "Verify",
@@ -371,5 +373,38 @@ class _LoginScreenState extends State<LoginScreen> {
             );
           });
     });
+  }
+
+  void signInWithPhoneAuthCredential(
+      PhoneAuthCredential phoneAuthCredential) async {
+    setState(() {
+      isLoading = true;
+    });
+
+    try {
+      final authCredential =
+          await firebaseAuth.signInWithCredential(phoneAuthCredential);
+
+      setState(() {
+        isLoading = false;
+      });
+
+      if (authCredential?.user != null) {
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) => Home(
+                      uid: '',
+                    )));
+      }
+    } on FirebaseAuthException catch (e) {
+      setState(() {
+        isLoading = false;
+      });
+
+      _scaffoldKey.currentState
+          // ignore: deprecated_member_use
+          .showSnackBar(SnackBar(content: Text(e.message)));
+    }
   }
 }
