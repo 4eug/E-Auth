@@ -1,6 +1,6 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:e_auth/screens/select_auth.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_database/firebase_database.dart';
 
 import 'package:flutter/material.dart';
 
@@ -46,6 +46,11 @@ class NavigateDrawer extends StatefulWidget {
   _NavigateDrawerState createState() => _NavigateDrawerState();
 }
 
+// Future<String> getEmail() async {
+//   var a = await FirebaseFirestore.instance.collection("users").get();
+//   return a.docs[0]['email'];
+// }
+
 class _NavigateDrawerState extends State<NavigateDrawer> {
   @override
   Widget build(BuildContext context) {
@@ -54,31 +59,24 @@ class _NavigateDrawerState extends State<NavigateDrawer> {
         padding: EdgeInsets.zero,
         children: <Widget>[
           UserAccountsDrawerHeader(
-            accountEmail: FutureBuilder(
-                future: FirebaseDatabase.instance
-                    .reference()
-                    .child("Users")
-                    .child(widget.uid)
-                    .once(),
-                builder: (context, AsyncSnapshot<DataSnapshot> snapshot) {
-                  print(snapshot);
+            accountEmail: StreamBuilder(
+                stream:
+                    FirebaseFirestore.instance.collection("users").snapshots(),
+                builder: (BuildContext context, AsyncSnapshot snapshot) {
                   if (snapshot.hasData) {
-                    return Text(
-                        snapshot.data.value['phoneNumber'] ?? 'default value');
+                    return Text(snapshot.data.docs[0]['phoneNumber'] ??
+                        'default value');
                   } else {
                     return CircularProgressIndicator();
                   }
                 }),
-            accountName: FutureBuilder(
-                future: FirebaseDatabase.instance
-                    .reference()
-                    .child("Users")
-                    .child(widget.uid)
-                    .once(),
-                builder: (context, AsyncSnapshot<DataSnapshot> snapshot) {
+            accountName: StreamBuilder(
+                stream:
+                    FirebaseFirestore.instance.collection("users").snapshots(),
+                builder: (BuildContext context, AsyncSnapshot snapshot) {
                   if (snapshot.hasData) {
                     return Text(
-                        snapshot.data.value['email'] ?? 'default value');
+                        snapshot.data.docs[0]['email'] ?? 'default value');
                   } else {
                     return CircularProgressIndicator();
                   }
