@@ -303,7 +303,7 @@ class _LoginScreenState extends State<LoginScreen> {
       // ignore: unused_field
       // ignore: unused_local_variable
       // var firebaseUser = FirebaseAuth.instance.currentUser;
-      FirebaseFirestore.instance
+      await FirebaseFirestore.instance
           .collection('users')
           .where('email', isEqualTo: email)
           .get()
