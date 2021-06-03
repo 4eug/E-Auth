@@ -193,7 +193,6 @@ class _LoginScreenState extends State<LoginScreen> {
                       setState(() {
                         isLoading = true;
                       });
-                      print("email: " + emailController.text);
                       _signin(emailController.text, passwordController.text);
                     },
                     child: Text(
