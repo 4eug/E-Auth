@@ -299,10 +299,6 @@ class _LoginScreenState extends State<LoginScreen> {
     FirebaseAuth.instance
         .signInWithEmailAndPassword(email: email, password: password)
         .then((result) async {
-      // print(FirebaseAuth.instance.currentUser.phoneNumber);
-      // ignore: unused_field
-      // ignore: unused_local_variable
-      // var firebaseUser = FirebaseAuth.instance.currentUser;
       await FirebaseFirestore.instance
           .collection('users')
           .where('email', isEqualTo: email)
