@@ -306,16 +306,15 @@ class _LoginScreenState extends State<LoginScreen> {
       // var firebaseUser = FirebaseAuth.instance.currentUser;
       FirebaseFirestore.instance
           .collection('users')
+          .where('email', isEqualTo: email)
           .get()
           .then((QuerySnapshot querySnapshot) {
         querySnapshot.docs.forEach((doc) {
           print(doc["phoneNumber"]);
-          setState(() {
-            retrievedNumber = doc["phoneNumber"];
-          });
+
+          retrievedNumber = doc["phoneNumber"];
         });
       });
-      Text(retrievedNumber ?? "");
 
       print(result.user.uid);
       isLoading = false;
@@ -335,7 +334,7 @@ class _LoginScreenState extends State<LoginScreen> {
           setState(() {
             isLoading = false;
           });
-          //signInWithPhoneAuthCredential(phoneAuthCredential);
+          signInWithPhoneAuthCredential(phoneAuthCredential);
         },
         verificationFailed: (verificationFailed) async {
           setState(() {
