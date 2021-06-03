@@ -27,10 +27,6 @@ class _LoginScreenState extends State<LoginScreen> {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey();
   FirebaseAuth firebaseAuth = FirebaseAuth.instance;
   CollectionReference users = FirebaseFirestore.instance.collection("Users");
-
-  // TextEditingController emailController = TextEditingController();
-  // TextEditingController passwordController = TextEditingController();
-  // TextEditingController phoneController = TextEditingController();
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
 
@@ -172,8 +168,6 @@ class _LoginScreenState extends State<LoginScreen> {
                     context,
                     MaterialPageRoute(builder: (context) => ResetScreen()),
                   );
-                  // Navigator.of(context).pushNamedAndRemoveUntil(
-                  //     resetScreenRoute, (route) => false);
                 },
               ),
             ],
