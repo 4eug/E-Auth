@@ -38,40 +38,18 @@ class _LoginScreenState extends State<LoginScreen> {
     return Scaffold(
       key: _scaffoldKey,
       backgroundColor: Colors.white,
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          Container(
-            padding: EdgeInsets.all(8.0),
-            child: isLoading
-                ? Center(
-                    child: CircularProgressIndicator(),
-                  )
-                : currentState == MobileVerificationState.SHOW_MOBILE_FORM_STATE
-                    ? emailpasswrdWidget(context)
-                    : getOtpFormWidget(context),
-          ),
-        ],
+      body: Container(
+        padding: EdgeInsets.all(8.0),
+        child: isLoading
+            ? Center(
+                child: CircularProgressIndicator(),
+              )
+            : currentState == MobileVerificationState.SHOW_MOBILE_FORM_STATE
+                ? emailpasswrdWidget(context)
+                : getOtpFormWidget(context),
       ),
     );
   }
-
-  // ignore: unused_element
-//   _signin() async {
-
-//        firebaseAuth.signInWithEmailAndPassword(
-//           email: emailController.text, password: passwordController.text);
-
-//       //Sucessful
-
-//       Navigator.of(context)
-//           .push(MaterialPageRoute(builder: (context) => LoginPhoneScreen()));
-//     } on FirebaseAuthException catch (error) {
-//       Fluttertoast.showToast(msg: error.message, gravity: ToastGravity.TOP);
-//     }
-
-// }
 
   emailpasswrdWidget(context) {
     bool isLoading = false;
