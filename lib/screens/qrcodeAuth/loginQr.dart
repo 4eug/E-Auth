@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_colorpicker/flutter_colorpicker.dart';
+import 'package:http/http.dart' as http;
 
 class LoginQr extends StatefulWidget {
   LoginQr({Key key}) : super(key: key);
@@ -14,6 +15,31 @@ class _LoginQrState extends State<LoginQr> with SingleTickerProviderStateMixin {
   bool color = false;
   Color pickerColor = new Color(0xff443a49);
   AnimationController _animatedController;
+
+  createQrCode(text, color) async {
+    var uri = (Uri.parse(
+        "https://dev4fun007-qr-code-generator-v1.p.rapidapi.com/hello"));
+
+    var response = await http.get(
+        uri.replace(queryParameters: <String, String>{
+          "text": "string",
+          "type": "text | url | tel | sms | email",
+          "backcolor": "00237c",
+          "forecolor": color,
+          "pixel": "9",
+          "ecl": "L | M| Q | H"
+        }),
+        headers: {
+          "x-rapidapi-key":
+              "47977a8876mshee1bdfc73acbeb4p114995jsnfdc9e143d406",
+          "x-rapidapi-host": "dev4fun007-qr-code-generator-v1.p.rapidapi.com",
+          "useQueryString": "true"
+        });
+
+    setState(() {
+      imageUrl = response.body;
+    });
+  }
 
   @override
   void initState() {
@@ -76,7 +102,8 @@ class _LoginQrState extends State<LoginQr> with SingleTickerProviderStateMixin {
                               height: 150,
                               width: 150,
                               child: FadeInImage.assetNetwork(
-                                  placeholder: "", image: imageUrl),
+                                  placeholder: "assets/images/loading.gif",
+                                  image: imageUrl),
                             ),
                           )
                         : Container()
@@ -187,6 +214,56 @@ class _LoginQrState extends State<LoginQr> with SingleTickerProviderStateMixin {
                           : Container()
                     ],
                   ),
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Container(
+                      margin: EdgeInsets.only(bottom: 50),
+                      height: 70,
+                      width: 150,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.all(Radius.circular(100)),
+                          color: Color.fromRGBO(255, 144, 39, 1)),
+                      // ignore: deprecated_member_use
+                      child: FlatButton(
+                        child: Text(
+                          "CREATE QR",
+                          style: TextStyle(color: Colors.white),
+                        ),
+                        onPressed: () {
+                          if (word != null) {
+                            createQrCode(word,
+                                "${pickerColor.red.toRadixString(16)}${pickerColor.green.toRadixString(16)}${pickerColor.blue.toRadixString(16)}");
+                          }
+                        },
+                      ),
+                    ),
+                    SizedBox(
+                      height: 15,
+                    ),
+                    Container(
+                      margin: EdgeInsets.only(bottom: 50),
+                      height: 70,
+                      width: 150,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.all(Radius.circular(100)),
+                          color: Color.fromRGBO(0, 180, 245, 1)),
+                      // ignore: deprecated_member_use
+                      child: FlatButton(
+                        child: Text(
+                          "SAVE QR",
+                          style: TextStyle(color: Colors.white),
+                        ),
+                        onPressed: () {
+                          if (word != null) {}
+                        },
+                      ),
+                    )
+                  ],
                 )
               ],
             ),
