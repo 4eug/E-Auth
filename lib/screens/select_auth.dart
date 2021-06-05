@@ -1,6 +1,5 @@
 import 'package:e_auth/screens/emailAuth/login.dart';
 import 'package:e_auth/screens/emailAuth/register.dart';
-import 'package:e_auth/screens/phoneAuth/login.dart';
 import 'package:flutter/material.dart';
 
 class SelectAuthType extends StatefulWidget {
@@ -60,48 +59,6 @@ class _SelectAuthTypeState extends State<SelectAuthType> {
                           padding: const EdgeInsets.all(6.0),
                           child: Text(
                             "Register With Your Email",
-                            style: TextStyle(
-                                fontSize: 23,
-                                color: Colors.white,
-                                letterSpacing: 0.168,
-                                fontWeight: FontWeight.w500),
-                          ),
-                        )
-                      ],
-                    ),
-                    color: Color(0xFF5ABD8C),
-                  ),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(16.0),
-                child: Container(
-                  width: double.infinity,
-                  // ignore: deprecated_member_use
-                  child: RaisedButton(
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => LoginPhoneScreen()),
-                      );
-                    },
-                    padding: EdgeInsets.symmetric(vertical: 10),
-                    shape: new RoundedRectangleBorder(
-                      borderRadius: new BorderRadius.circular(30.0),
-                    ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Icon(
-                          Icons.phone,
-                          color: Colors.white,
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.all(6.0),
-                          child: Text(
-                            "Log In Using Phone Number",
                             style: TextStyle(
                                 fontSize: 23,
                                 color: Colors.white,

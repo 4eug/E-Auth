@@ -38,15 +38,21 @@ class _LoginScreenState extends State<LoginScreen> {
     return Scaffold(
       key: _scaffoldKey,
       backgroundColor: Colors.white,
-      body: Container(
-        padding: EdgeInsets.all(8.0),
-        child: isLoading
-            ? Center(
-                child: CircularProgressIndicator(),
-              )
-            : currentState == MobileVerificationState.SHOW_MOBILE_FORM_STATE
-                ? emailpasswrdWidget(context)
-                : getOtpFormWidget(context),
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          Container(
+            padding: EdgeInsets.all(8.0),
+            child: isLoading
+                ? Center(
+                    child: CircularProgressIndicator(),
+                  )
+                : currentState == MobileVerificationState.SHOW_MOBILE_FORM_STATE
+                    ? emailpasswrdWidget(context)
+                    : getOtpFormWidget(context),
+          ),
+        ],
       ),
     );
   }

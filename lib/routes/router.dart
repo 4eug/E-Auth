@@ -1,7 +1,6 @@
 import 'package:e_auth/routes/routes.dart';
 import 'package:e_auth/screens/emailAuth/login.dart';
 import 'package:e_auth/screens/home.dart';
-import 'package:e_auth/screens/phoneAuth/login.dart';
 import 'package:e_auth/screens/test.dart';
 import 'package:e_auth/screens/welcome.dart';
 import 'package:flutter/material.dart';
@@ -26,12 +25,6 @@ Route<dynamic> generateRoute(RouteSettings settings) {
     case loginScreenRoute:
       return PageTransition(
         child: LoginScreen(),
-        type: PageTransitionType.fade,
-      );
-
-    case loginPhoneScreenRoute:
-      return PageTransition(
-        child: LoginPhoneScreen(),
         type: PageTransitionType.fade,
       );
 
