@@ -111,7 +111,6 @@ class _LoginScreenState extends State<LoginScreen> {
               setState(() {
                 emailController.text = value.trim();
               });
-              print(emailController.text);
             },
           ),
         ),
