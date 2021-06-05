@@ -1,6 +1,6 @@
 import 'package:e_auth/screens/emailAuth/login.dart';
 import 'package:e_auth/screens/emailAuth/register.dart';
-import 'package:e_auth/screens/qrcodeAuth/loginQr.dart';
+import 'package:e_auth/screens/qrcodeAuth/createQr.dart';
 import 'package:flutter/material.dart';
 
 class SelectAuthType extends StatefulWidget {
@@ -123,7 +123,7 @@ class _SelectAuthTypeState extends State<SelectAuthType> {
                     onPressed: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => LoginQr()),
+                        MaterialPageRoute(builder: (context) => CreateQR()),
                       );
                     },
                     padding: EdgeInsets.symmetric(vertical: 10),
