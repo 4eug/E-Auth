@@ -39,8 +39,10 @@ class Home extends StatelessWidget {
   }
 }
 
+// ignore: must_be_immutable
 class NavigateDrawer extends StatefulWidget {
   final String uid;
+  int index;
   NavigateDrawer({Key key, this.uid}) : super(key: key);
   @override
   _NavigateDrawerState createState() => _NavigateDrawerState();
@@ -59,9 +61,11 @@ class _NavigateDrawerState extends State<NavigateDrawer> {
         padding: EdgeInsets.zero,
         children: <Widget>[
           UserAccountsDrawerHeader(
-            accountEmail: StreamBuilder(
-                stream:
-                    FirebaseFirestore.instance.collection("users").snapshots(),
+            accountEmail: StreamBuilder<QuerySnapshot>(
+                stream: FirebaseFirestore.instance
+                    .collection("users")
+                    .orderBy('phoneNumber')
+                    .snapshots(),
                 builder: (BuildContext context, AsyncSnapshot snapshot) {
                   if (snapshot.hasData) {
                     return Text(snapshot.data.docs[0]['phoneNumber'] ??
@@ -70,7 +74,7 @@ class _NavigateDrawerState extends State<NavigateDrawer> {
                     return CircularProgressIndicator();
                   }
                 }),
-            accountName: StreamBuilder(
+            accountName: StreamBuilder<QuerySnapshot>(
                 stream:
                     FirebaseFirestore.instance.collection("users").snapshots(),
                 builder: (BuildContext context, AsyncSnapshot snapshot) {

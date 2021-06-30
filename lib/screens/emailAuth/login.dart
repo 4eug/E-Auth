@@ -290,13 +290,6 @@ class _LoginScreenState extends State<LoginScreen> {
 
       print(result.user.uid);
       isLoading = false;
-      // Navigator.pushReplacement(
-      //   context,
-      //   MaterialPageRoute(
-      //       builder: (context) => Home(
-      //             uid: '',
-      //           )),
-      // );
 
       //functon to otp
 
